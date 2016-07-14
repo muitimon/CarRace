@@ -168,14 +168,14 @@ public class AIController implements Controller, Constants {
 	  double nextwaydistance = inputs.getDistanceToNextWaypoint();
 	  //System.out.println(myNextToCarDistance);
 	  int otherMoveFlag = checkOtherMoveFlag.Check(inputs);
-	  System.out.println("otherMoveFlag " + otherMoveFlag);
+	  //  System.out.println("otherMoveFlag " + otherMoveFlag);
 	  double speed = inputs.getSpeed();
 	  double nextwayangle = inputs.getAngleToNextWaypoint();
 	  if(otherMoveFlag == nextnextFlag){
-		System.out.println("myScore " + myScore + " otherScore " + otherScore);
+		//	System.out.println("myScore " + myScore + " otherScore " + otherScore);
 		
 		if(nextwaydistance < 0.05){
-		System.out.println("OK");
+		  //System.out.println("OK");
 		  if(0.001 < speed){
 			if(0 < nextwayangle){
 			  command = backwardleft;

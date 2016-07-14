@@ -49,7 +49,7 @@ public class CheckOtherMoveFlag extends Object{
 	else{
 	  otherMoveFlag = 2;
 	}
-	System.out.println("otherNextnextDistance " + othertoNextnextDistance);
+	//	System.out.println("otherNextnextDistance " + othertoNextnextDistance);
 	//相手の方が2の旗に近く,とても2の旗と相手の距離が近い
 	if(myNextnextDistance>othertoNextnextDistance && othertoNextnextDistance < 30){
 	  otherMoveFlag = 2;
