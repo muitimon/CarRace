@@ -174,7 +174,7 @@ public class AIController implements Controller, Constants {
 	  if(otherMoveFlag == nextnextFlag){
 		//	System.out.println("myScore " + myScore + " otherScore " + otherScore);
 		
-		if(nextwaydistance < 0.05){
+		if(nextwaydistance < 0.07){
 		  //System.out.println("OK");
 		  if(0.001 < speed){
 			if(0 < nextwayangle){
