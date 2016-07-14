@@ -41,7 +41,7 @@ public class SelectFlag extends Object{
     // 自分の方が旗に近い
     if (myNextToCarDistance < otherNextToCarDistance) {
       // 相手の方がそこまで早くない
-      if (-10.0 < myCheckVelocity-otherCheckVelocity) {
+      if (-7.0 < myCheckVelocity-otherCheckVelocity) {
         aim[0] = inputs.getAngleToNextWaypoint();
         aim[1] = inputs.getDistanceToNextWaypoint();
       }
@@ -54,7 +54,7 @@ public class SelectFlag extends Object{
     // 相手の方が旗に近い
     else{
       // 相手よりかなり差をつけて早くなれない
-      if (myCheckVelocity-otherCheckVelocity < 10.0) {
+      if (myCheckVelocity-otherCheckVelocity < 7.5) {
         aim[0] = inputs.getAngleToNextNextWaypoint();
         aim[1] = inputs.getDistanceToNextNextWaypoint();
       }

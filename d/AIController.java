@@ -164,37 +164,49 @@ public class AIController implements Controller, Constants {
 	double myScore    = inputs.getScore();
 	double otherScore = inputs.getOtherVehicleScore();
 
-	if(myScore > otherScore){
-	  double nextwaydistance = inputs.getDistanceToNextWaypoint();
-	  //System.out.println(myNextToCarDistance);
-	  int otherMoveFlag = checkOtherMoveFlag.Check(inputs);
-	  //  System.out.println("otherMoveFlag " + otherMoveFlag);
-	  double speed = inputs.getSpeed();
-	  double nextwayangle = inputs.getAngleToNextWaypoint();
-	  if(otherMoveFlag == nextnextFlag){
-		//	System.out.println("myScore " + myScore + " otherScore " + otherScore);
+	if(myScore > otherScore){//スコアが相手より多い時
+	  Vector2d nextPosition    = new Vector2d(inputs.getNextWaypointPosition());
+	  Vector2d nextnextPostion = new Vector2d(inputs.getNextNextWaypointPosition());
+
+	  //1の旗,2の旗の距離
+	  double nextNextnextDistance = Math.hypot(nextPosition.x-nextnextPostion.x,
+											   nextPosition.y-nextnextPostion.y);
+	  if(nextNextnextDistance > 20){//距離が近すぎる時は入らない
+		double nextwaydistance = inputs.getDistanceToNextWaypoint();
+		int otherMoveFlag = checkOtherMoveFlag.Check(inputs);
+		double speed = inputs.getSpeed();
+		double nextwayangle = inputs.getAngleToNextWaypoint();
+		if(otherMoveFlag == nextnextFlag){//相手が2に向かっている時
 		
-		if(nextwaydistance < 0.05){
-		  //System.out.println("OK");
-		  if(0.001 < speed){
-			if(0 < nextwayangle){
-			  command = backwardleft;
+		  if(nextwaydistance < 0.06){
+			//System.out.println("OK");
+			if(0.01 < speed){
+			  if(0 < nextwayangle){
+				command = backwardleft;
+			  }
+			  else{
+				command = backwardright;
+			  }
 			}
-			else{
-			  command = backwardright;
-			}
-		  }
-		  else if(speed < -0.001){
-			if(0 < nextwayangle){
-			  command = forwardleft;
-			}
-			else{
-			  command = forwardright;
+			else if(speed < -0.1){
+			  if(0 < nextwayangle){
+				command = forwardleft;
+			  }
+			  else{
+				command = forwardright;
+			  }
+			}else{
+			  if(0 < nextwayangle){
+				command = backwardleft;
+			  }
+			  else{
+				command = backwardright;
+			  }
+
 			}
 		  }
 		}
 	  }
-	 
 	}
 	//System.out.println(otherMoveFlag);
 	return command;
